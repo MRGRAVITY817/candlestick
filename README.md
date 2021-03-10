@@ -5,6 +5,9 @@ A simple candlestick chart made with C++.
 ---
 
 ### File Tree 
+```
+$ tree
+
 candlestick  
 ├── Makefile   
 ├── README.md  
@@ -19,6 +22,7 @@ candlestick
 └── src  
     ├── Makefile  
     └── main.cc  
+```
 
 ---
 
