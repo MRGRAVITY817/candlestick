@@ -2,14 +2,15 @@
 
 int main() {
   bool interrupt = true;
-  Chart *pm = new Chart(32, 16);
+  Chart *chart = new Chart(32, 16);
 
   // while (interrupt) {
-  //   system("clear");
-  //   pm->print_matrix();
-  //   usleep(3 * 1000);
+  //   clear_out();
+  //   chart->print_matrix();
+  //   usleep(5 * 1000);
   // }
   cprintf("Hello world ", Red);
-  delete pm;
+  cprintf("Hello world ", Blue);
+  delete chart;
   return 0;
 }

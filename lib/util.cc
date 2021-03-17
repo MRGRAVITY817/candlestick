@@ -5,6 +5,8 @@ void cprintf(std::string str, Color color) {
   printf("\033[1;%dm", color);
   printf("%s", str.c_str());
 }
+// Clear the print
+void clear_out() { printf("\x1b[2J"); }
 // Allocate memory for 2d array
 int **alloc_2d(int **array, int width, int height) {
   array = new int *[width];
