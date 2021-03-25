@@ -15,6 +15,7 @@ candlestick
 │   ├── Makefile  
 │   ├── candle.cc  
 │   ├── chart.cc  
+│   ├── pattern.cc  
 │   ├── main.h  
 │   └── util.cc  
 ├── obj  
