@@ -1,6 +1,6 @@
 CC = g++
 TARGET = main
-LIB_OBJ = chart.o candle.o util.o
+LIB_OBJ = chart.o candle.o util.o pattern.o
 MAIN_OBJ = main.o
 OBJS = $(MAIN_OBJ) $(LIB_OBJ)
 
