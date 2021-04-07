@@ -1,32 +1,42 @@
 #include "main.h"
 
 // Make candlestick
-CandleStick::CandleStick(CandleSign _c_sign, CandleKind _c_kind, int _center)
-    : c_sign(_c_sign), c_kind(_c_kind), center(_center) {
+CandleStick::CandleStick() { this->candle = new Block[16]; }
+CandleStick::~CandleStick() { delete this->candle; }
+
+void CandleStick::set_candle(CandleSign _c_sign, CandleKind _c_kind,
+                             int _center, int _height) {
+  this->c_sign = _c_sign;
+  this->c_kind = _c_kind;
+  this->center = _center;
+  this->height = _height;
   if (this->c_kind == Long) {
     this->open_price = this->center - 1;
     this->close_price = this->center + 1;
     this->high_price = this->close_price + 1;
     this->low_price = this->open_price - 1;
   } else if (this->c_kind == Short) {
-    this->open_price, this->close_price = this->center;
+    this->open_price = this->center;
+    this->close_price = this->center;
     this->high_price = this->close_price + 1;
     this->low_price = this->open_price - 1;
   }
+  this->set_blocks();
 }
 
-Block *CandleStick::give_candle(int center, int height) {
-  Color block_color = this->c_sign == Positive ? Red : Blue;
-  Block *block_array = new Block[height];
-  for (int i = 0; i < height; i++) {
-    block_array[i].color = block_color;
+void CandleStick::print_part(int part) {
+  cprintf(this->candle[part].item, this->candle[part].color);
+}
+
+void CandleStick::set_blocks() {
+  for (int i = 0; i < this->height; i++) {
+    this->candle[i].color = this->c_sign == Positive ? Red : Blue;
     if (i == this->open_price || i == this->close_price || i == this->center) {
-      block_array[i].item = Square;
+      this->candle[i].item = Square;
     } else if (i == this->high_price || i == this->low_price) {
-      block_array[i].item = Line;
+      this->candle[i].item = Line;
     } else {
-      block_array[i].item = Space;
+      this->candle[i].item = Space;
     }
   }
-  return block_array;
 }

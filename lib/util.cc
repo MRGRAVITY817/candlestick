@@ -3,7 +3,16 @@
 // Colored Print
 void cprintf(Item item, Color color) {
   printf("\033[1;%dm", color);
-  printf("%c ", item);
+
+  char newItem;
+  if (item == Square)
+    newItem = 254;
+  else if (item == Line)
+    newItem = '|';
+  else if (item == Space)
+    newItem = ' ';
+
+  printf("%c ", newItem);
 }
 // Clear the print
 void clear_out() { printf("\x1b[2J"); }

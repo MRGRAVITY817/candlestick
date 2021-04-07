@@ -1,10 +1,16 @@
 # Candlestick Chart 📈 made with C++
-![candlestick_chart](img/candlestick_chart.svg)
+
 A simple candlestick chart made with C++.    
+
+## Comparison (Just for fun :D)
+
+|Real Chart     |C++ Candlestick Chart     |
+:--------------:|:------------------------:|
+![candlestick_chart](img/candlestick_chart.svg) | ![c++_candlestick](img/candlestick.png)
 
 ---
 
-### File Tree 
+## File Tree 
 ```
 $ tree
 

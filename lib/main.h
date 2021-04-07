@@ -8,7 +8,7 @@ enum CandleSign { Positive, Negative };
 enum CandleKind { Long, Short };
 enum CandlePatternSign { Bullish, Bearish };
 enum CandlePatternShape { Engulfing, Harami };
-enum Item { Square = '@', Line = '|', Space = ' ' };
+enum Item { Square, Line, Space };
 enum Color { Black = 30, Red = 31, Blue = 34 };
 
 struct Block {
@@ -23,46 +23,55 @@ void free_2d(Block **array, int width);
 
 class CandleStick {
 private:
-  CandleSign c_sign;
-  CandleKind c_kind;
-  int high_price;
-  int open_price;
-  int close_price;
-  int low_price;
-  int center;
+  CandleSign c_sign = Positive;
+  CandleKind c_kind = Long;
+  int high_price = 0;
+  int open_price = 0;
+  int close_price = 0;
+  int low_price = 0;
+  int center = 0;
+  int height = 16;
+  Block *candle;
 
 public:
-  CandleStick(CandleSign _c_sign, CandleKind _c_kind, int _center);
+  CandleStick();
+  ~CandleStick();
+  void set_candle(CandleSign _c_sign, CandleKind _c_kind, int _center,
+                  int _height);
   bool check_available(CandlePatternSign cp_sign, CandlePatternShape cp_shape);
-  Block *give_candle(int center, int height);
+  void print_part(int part);
+  void set_blocks();
 };
 
 class CandlePattern {
 private:
-  CandlePatternSign c_pattern_sign;
-  CandlePatternShape c_pattern_shape;
-  int width = 4;
+  CandlePatternSign c_pattern_sign = Bullish;
+  CandlePatternShape c_pattern_shape = Engulfing;
+  int width = 0;
   int height = 16;
-  int center = 2;
+  int center = 0;
   int turn = 0;
-  Block **pattern;
+  CandleStick *pattern;
 
 public:
-  CandlePattern(int _width, int _height, CandlePatternSign _c_pattern_sign,
-                CandlePatternShape _c_pattern_shape);
+  CandlePattern();
   ~CandlePattern();
+  void print_part(int part);
+  int set_pattern(int _width, int _height, int _center,
+                  CandlePatternSign _c_pattern_sign,
+                  CandlePatternShape _c_pattern_shape);
   void make_pattern();
   void make_column(CandleSign c_sign, CandleKind c_kind);
-  Block **give_pattern();
+  CandleStick *give_pattern();
 };
 
 class Chart {
 private:
-  int width = 32;
-  int height = 16;
-  int round = 0;
-  int pattern_num = 0;
-  Block **chart;
+  int width;
+  int height;
+  int pattern_num;
+  int center;
+  CandlePattern *chart;
 
 public:
   Chart(int _width, int _height);
