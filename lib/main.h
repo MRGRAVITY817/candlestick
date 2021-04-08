@@ -30,7 +30,7 @@ private:
   int close_price = 0;
   int low_price = 0;
   int center = 0;
-  int height = 16;
+  int height = 32;
   Block *candle;
 
 public:
@@ -48,7 +48,7 @@ private:
   CandlePatternSign c_pattern_sign = Bullish;
   CandlePatternShape c_pattern_shape = Engulfing;
   int width = 0;
-  int height = 16;
+  int height = 32;
   int center = 0;
   int turn = 0;
   CandleStick *pattern;

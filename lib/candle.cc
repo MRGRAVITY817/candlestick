@@ -1,7 +1,7 @@
 #include "main.h"
 
 // Make candlestick
-CandleStick::CandleStick() { this->candle = new Block[16]; }
+CandleStick::CandleStick() { this->candle = new Block[32]; }
 CandleStick::~CandleStick() { delete this->candle; }
 
 void CandleStick::set_candle(CandleSign _c_sign, CandleKind _c_kind,

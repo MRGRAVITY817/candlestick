@@ -1,7 +1,9 @@
 #include "main.h"
 
 // Constructor: Allocate matrix memory
-CandlePattern::CandlePattern() { this->pattern = new CandleStick[4]; }
+CandlePattern::CandlePattern() {
+  this->pattern = new CandleStick[this->height];
+}
 
 // Destructor: Free pattern memory
 CandlePattern::~CandlePattern() { delete this->pattern; }

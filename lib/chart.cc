@@ -19,7 +19,7 @@ void Chart::print_chart() {
 
 void Chart::add_pattern(CandlePatternSign cp_sign,
                         CandlePatternShape cp_shape) {
-  if (this->pattern_num > 7) {
+  if (this->pattern_num > this->width / 4 - 1) {
     this->chart = new CandlePattern[this->width / 4];
     this->pattern_num = 0;
   }
